@@ -1,10 +1,6 @@
 const roots = (location.hash.slice(1) || '')
   .split(':')
   .map(x => ''+x);
-var skylink = null;
-setTimeout(() => {
-  skylinkP.then(x => skylink = x);
-}, 1);
 
 // TODO
 window.require = function (names) {
