@@ -10,6 +10,7 @@ setTimeout(() => {
 window.require = function (names) {
   console.log("'Requiring'", names)
 }
+const {Skylink} = DustClient;
 
 Vue.component('entry-item', {
   template: '#entry-item',
