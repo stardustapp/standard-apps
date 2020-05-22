@@ -1,8 +1,9 @@
 <!doctype html>
 <title>Name System - Stardust</title>
-<link href="https://fonts.googleapis.com/css?family=Roboto|Material+Icons" rel="stylesheet">
-<link href="/~~/fonts/vendor/fira-code.css" rel="stylesheet">
-<link href="/~~/lib/dustjs-client-vue.css" type="text/css" rel="stylesheet">
+<link href="/~~/lib/typeface-roboto/index.css" rel="stylesheet">
+<link href="/~~/lib/typeface-fira-code/index.css" rel="stylesheet">
+<link href="/~~/lib/material-icons/material-icons.css" rel="stylesheet">
+<link href="/~~/lib/@dustjs-client-vue/dustjs-client-vue.css" type="text/css" rel="stylesheet">
 <link href="app.css" type="text/css" rel="stylesheet">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -261,26 +262,25 @@
 </script>
 
 
-<link rel="stylesheet" href="./codemirror/codemirror.css">
-<link rel="stylesheet" href="./codemirror/themes/tomorrow-night-bright.css">
-<script src="./codemirror/codemirror.js"></script>
-<script src="./codemirror/codemirror-mode.js"></script>
-<script src="./codemirror/modes/css.js"></script>
-<script src="./codemirror/modes/xml.js"></script>
-<script src="./codemirror/modes/javascript.js"></script>
-<script src="./codemirror/modes/htmlmixed.js"></script>
-<script src="./codemirror/modes/vue.js"></script>
-<script src="./codemirror/modes/go.js"></script>
-<script src="./codemirror/modes/lua.js"></script>
-<script src="./codemirror/modes/yaml.js"></script>
+<link rel="stylesheet" href="/~~/lib/codemirror/lib/codemirror.css">
+<link rel="stylesheet" href="/~~/lib/codemirror/theme/tomorrow-night-bright.css">
+<script src="/~~/lib/codemirror/lib/codemirror.js"></script>
+<script src="/~~/lib/codemirror/mode/meta.js"></script>
+<script src="/~~/lib/codemirror/mode/css/css.js"></script>
+<script src="/~~/lib/codemirror/mode/xml/xml.js"></script>
+<script src="/~~/lib/codemirror/mode/javascript/javascript.js"></script>
+<script src="/~~/lib/codemirror/mode/htmlmixed/htmlmixed.js"></script>
+<script src="/~~/lib/codemirror/mode/vue/vue.js"></script>
+<script src="/~~/lib/codemirror/mode/go/go.js"></script>
+<script src="/~~/lib/codemirror/mode/lua/lua.js"></script>
+<script src="/~~/lib/codemirror/mode/yaml/yaml.js"></script>
 
-
-<script src="/~~/lib/vendor/vue.js"></script>
-<script src="/~~/lib/vendor/vue-codemirror.js"></script>
-<script src="/~~/lib/dustjs-client.umd.js"></script>
-<script src="/~~/lib/vendor/debounce.js"></script>
+<script src="/~~/lib/vue/vue.min.js"></script>
+<script src="/~~/lib/@dustjs-client/dustjs-client.umd.js"></script>
+<script src="/~~/lib/@dustjs-client-vue/dustjs-client-vue.umd.js"></script>
+<script src="vue-codemirror.js"></script>
+<script src="debounce.js"></script>
 <script src="app.js"></script>
-<script src="/~~/lib/dustjs-client-vue.umd.js"></script>
 <script>
   Vue.use(DustClientVue.AppPlugin);
   Vue.use(DustClientVue.MixinPlugin);
