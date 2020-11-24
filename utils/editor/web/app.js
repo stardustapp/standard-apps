@@ -198,7 +198,7 @@ Vue.component('create-name', {
         alert("Enter a name!");
         return;
       }
-      const fullPath = this.tab.path + '/' + this.name;
+      const fullPath = this.tab.path + '/' + encodeURIComponent(this.name);
 
       switch (this.type) {
       case "Blob":
