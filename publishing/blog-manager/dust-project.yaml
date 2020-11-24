@@ -1,0 +1,9 @@
+type: application
+bundles:
+
+- source: web
+  type: static html
+
+- source: routines
+  type: app routines
+  runtime: deno
