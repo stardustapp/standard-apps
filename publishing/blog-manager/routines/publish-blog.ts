@@ -152,7 +152,8 @@ class PublishBlogRuntime {
       if (htmlBlob) {
         return new TextDecoder('utf-8').decode(htmlBlob.asBytes());
       } else if (markdownBlob) {
-        return Marked.parse('# hi').content;
+        const markdownText = new TextDecoder('utf-8').decode(markdownBlob.asBytes());
+        return Marked.parse(markdownText).content;
       }
       throw new Error("No innerHtml for content");
     }
