@@ -157,6 +157,11 @@ class PublishBlogRuntime {
     }
 
     const htmlFiles = new Array<SiteFile>();
+    htmlFiles.push({
+      path: '/healthz',
+      body: new TextEncoder().encode('ok'),
+    });
+
     function renderContentNodes(list: ContentNode[], layout: string) {
       list.forEach(content => {
         content.baseHref = reversePath(content.path);
