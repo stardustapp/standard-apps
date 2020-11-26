@@ -40,4 +40,5 @@ hosted_libraries:
   - theme/tomorrow-night-bright\.css
   - mode/meta\.js
   - mode/(htmlmixed|javascript|css)/[^/.]+\.js
-  - mode/(xml|yaml|vue|go|lua)/[^/.]+\.js
+  - mode/(xml|yaml|vue|go|lua|markdown)/[^/.]+\.js
+  - addon/mode/overlay.js
