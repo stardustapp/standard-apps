@@ -284,6 +284,7 @@
 <script>
   Vue.use(DustClientVue.AppPlugin);
   Vue.use(DustClientVue.MixinPlugin);
+  //CONFIGURE SKYLINK//
   window.skylink = null;
   DustClientVue.bootNow().then(app => {
     window.skylinkP.then(x => window.skylink = x);
