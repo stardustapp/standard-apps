@@ -158,7 +158,7 @@ class PublishBlogRuntime {
 
     const htmlFiles = new Array<SiteFile>();
     htmlFiles.push({
-      path: '/healthz',
+      path: '/health',
       body: new TextEncoder().encode('ok'),
     });
 
