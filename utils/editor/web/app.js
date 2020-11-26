@@ -357,6 +357,12 @@ Vue.component('edit-blob', {
       }
     };
   },
+  watch: {
+    mimeType(newMime) {
+      if (!newMime) return;
+      this.editor.setOption("mode", newMime.split(';')[0]);
+    },
+  },
   computed: {
     parentPath() {
       const pathParts = this.tab.path.split('/');
