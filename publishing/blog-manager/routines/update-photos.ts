@@ -1,7 +1,5 @@
 import { BlobEntry } from "/home/dan/Code/@stardustapp/dust-typescript/skylink/src/mod.ts";
 import { AutomatonBuilder, Automaton, ApiHandle } from "https://uber.danopia.net/deno/dust@v1beta1/client-automaton/mod.ts";
-// import { Marked } from "https://deno.land/x/markdown@v2.0.0/mod.ts";
-// import Mustache from 'https://deno.land/x/mustache@v0.2.1/mustache.mjs';
 import * as Base64 from 'https://deno.land/x/base64@v0.2.1/mod.ts';
 import * as XmlEntities from 'https://deno.land/x/html_entities@v1.0/lib/xml-entities.js';
 

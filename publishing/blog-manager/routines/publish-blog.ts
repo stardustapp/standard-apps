@@ -1,14 +1,13 @@
-import { BlobEntry, Entry, FolderEntry } from "/home/dan/Code/@stardustapp/dust-typescript/skylink/src/mod.ts";
+import { BlobEntry, Entry, FolderEntry } from "https://uber.danopia.net/deno/dust@v1beta1/skylink/src/mod.ts";
 import { AutomatonBuilder, Automaton, ApiHandle } from "https://uber.danopia.net/deno/dust@v1beta1/client-automaton/mod.ts";
+import { ServiceAccount } from "https://danopia.net/deno/google-service-account@v1.ts";
+
 import { Marked } from "https://deno.land/x/markdown@v2.0.0/mod.ts";
 import Mustache from 'https://deno.land/x/mustache@v0.2.1/mustache.mjs';
-import * as Base64 from 'https://deno.land/x/base64@v0.2.1/mod.ts';
+import * as Gzip from "https://deno.land/x/wasm_gzip@v1.0.0/mod.ts";
 import {Sha256} from "https://deno.land/std@0.78.0/hash/sha256.ts";
 
-import { ServiceAccount } from "https://danopia.net/deno/google-service-account@v1.ts";
-import * as Gzip from "https://github.com/manyuanrong/wasm_gzip/raw/master/mod.ts";
-
-type SiteFile = {path: string, body: Uint8Array, mime?: string};
+type SiteFile = {path: string, body: Uint8Array};
 async function publishFirebaseSite(siteId: string, credentialPath: string, files: Iterable<SiteFile>) {
   const credential = await ServiceAccount.readFromFile(credentialPath);
   const token = await credential.issueToken("https://www.googleapis.com/auth/firebase");
@@ -99,11 +98,6 @@ async function publishFirebaseSite(siteId: string, credentialPath: string, files
     }).then(x => x.json());
   console.log('Completed Firebase deploy:', deploy);
 }
-
-// await publishFirebaseSite('blog-bbudj4be', 'devmodecloud-7eb533117d28.json', [
-//   {path: 'index.html', body: new TextEncoder().encode('hello world')},
-// ]);
-// Deno.exit(61);
 
 const renderMustache = Mustache.render as unknown as (template: string, view: unknown) => string;
 
