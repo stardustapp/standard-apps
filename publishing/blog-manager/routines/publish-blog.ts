@@ -1,8 +1,8 @@
 import { BlobEntry, Entry, FolderEntry } from "https://uber.danopia.net/deno/dust@v1beta1/skylink/src/mod.ts";
 import { AutomatonBuilder, Automaton, ApiHandle } from "https://uber.danopia.net/deno/dust@v1beta1/client-automaton/mod.ts";
 
-import { ServiceAccount } from "https://danopia.net/deno/google-service-account@v1.ts";
-import { deployFirebaseSite } from "https://danopia.net/deno/firebase-hosting-deploy@v1.ts";
+import { ServiceAccount } from "https://cloudydeno.github.io/deno-bitesized/integrations/google-service-account@v2.ts";
+import { deployFirebaseSite } from "https://cloudydeno.github.io/deno-bitesized/integrations/firebase-hosting-deploy@v1.ts";
 
 import { Marked } from "https://deno.land/x/markdown@v2.0.0/mod.ts";
 import Mustache from 'https://deno.land/x/mustache@v0.2.1/mustache.mjs';

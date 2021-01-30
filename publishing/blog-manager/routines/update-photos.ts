@@ -1,4 +1,4 @@
-import { BlobEntry } from "/home/dan/Code/@stardustapp/dust-typescript/skylink/src/mod.ts";
+import { BlobEntry } from "https://uber.danopia.net/deno/dust@v1beta1/skylink/src/mod.ts";
 import { AutomatonBuilder, Automaton, ApiHandle } from "https://uber.danopia.net/deno/dust@v1beta1/client-automaton/mod.ts";
 import * as Base64 from 'https://deno.land/x/base64@v0.2.1/mod.ts';
 import * as XmlEntities from 'https://deno.land/x/html_entities@v1.0/lib/xml-entities.js';
