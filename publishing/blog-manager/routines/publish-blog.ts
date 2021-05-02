@@ -1,11 +1,11 @@
 import { BlobEntry, Entry, FolderEntry } from "https://uber.danopia.net/deno/dust@v1beta1/skylink/src/mod.ts";
 import { AutomatonBuilder, Automaton, ApiHandle } from "https://uber.danopia.net/deno/dust@v1beta1/client-automaton/mod.ts";
 
-import { ServiceAccount } from "https://cloudydeno.github.io/deno-bitesized/integrations/google-service-account@v2.ts";
-import { deployFirebaseSite } from "https://cloudydeno.github.io/deno-bitesized/integrations/firebase-hosting-deploy@v1.ts";
+import { ServiceAccount } from "https://crux.land/5D1UrM#google-service-account@v2";
+import { deployFirebaseSite } from "https://crux.land/7Fjaxx#firebase-hosting-deploy@v1";
 
 import { Marked } from "https://deno.land/x/markdown@v2.0.0/mod.ts";
-import Mustache from 'https://deno.land/x/mustache@v0.2.1/mustache.mjs';
+import Mustache from 'https://deno.land/x/mustache@v0.3.0/mustache.mjs';
 
 type SiteFile = {path: string, body: Uint8Array};
 async function publishFirebaseSite(siteId: string, credentialPath: string, files: Iterable<SiteFile>) {
