@@ -2,7 +2,7 @@ import { BlobEntry, Entry, FolderEntry } from "https://uber.danopia.net/deno/dus
 import { AutomatonBuilder, Automaton, ApiHandle } from "https://uber.danopia.net/deno/dust@v1beta1/client-automaton/mod.ts";
 
 import { ServiceAccount } from "https://crux.land/5D1UrM#google-service-account@v2";
-import { deployFirebaseSite } from "https://crux.land/7Fjaxx#firebase-hosting-deploy@v1";
+import { deployFirebaseSite } from "https://crux.land/3JVH9X#firebase-hosting-deploy@v1";
 
 import { Marked } from "https://deno.land/x/markdown@v2.0.0/mod.ts";
 import Mustache from 'https://deno.land/x/mustache@v0.3.0/mustache.mjs';
