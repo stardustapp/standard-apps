@@ -1,6 +1,6 @@
 import { BlobEntry } from "https://uber.danopia.net/deno/dust@v1beta1/skylink/src/mod.ts";
 import { AutomatonBuilder, Automaton, ApiHandle } from "https://uber.danopia.net/deno/dust@v1beta1/client-automaton/mod.ts";
-import * as Base64 from 'https://deno.land/x/base64@v0.2.1/mod.ts';
+import * as Base64 from 'https://deno.land/std@0.95.0/encoding/base64.ts';
 import * as XmlEntities from 'https://deno.land/x/html_entities@v1.0/lib/xml-entities.js';
 
 class UpdatePhotosRuntime {
@@ -84,15 +84,15 @@ class UpdatePhotosRuntime {
 const jpegtpl = "/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEABsaGikdKUEmJkFCLy8vQkc/Pj4/R0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0cBHSkpNCY0PygoP0c/NT9HR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR//AABEIABQAKgMBIgACEQEDEQH/xAGiAAABBQEBAQEBAQAAAAAAAAAAAQIDBAUGBwgJCgsQAAIBAwMCBAMFBQQEAAABfQECAwAEEQUSITFBBhNRYQcicRQygZGhCCNCscEVUtHwJDNicoIJChYXGBkaJSYnKCkqNDU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6g4SFhoeIiYqSk5SVlpeYmZqio6Slpqeoqaqys7S1tre4ubrCw8TFxsfIycrS09TV1tfY2drh4uPk5ebn6Onq8fLz9PX29/j5+gEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoLEQACAQIEBAMEBwUEBAABAncAAQIDEQQFITEGEkFRB2FxEyIygQgUQpGhscEJIzNS8BVictEKFiQ04SXxFxgZGiYnKCkqNTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqCg4SFhoeIiYqSk5SVlpeYmZqio6Slpqeoqaqys7S1tre4ubrCw8TFxsfIycrS09TV1tfY2dri4+Tl5ufo6ery8/T19vf4+fr/2gAMAwEAAhEDEQA/AA==";
 function preview_to_jpeg_url(inputString: string) {
   if (!inputString) return null;
-	const dynamic = Base64.toUint8Array(inputString);
+	const dynamic = Base64.decode(inputString);
 	const payload = dynamic.subarray(3);
-	const template = Base64.toUint8Array(jpegtpl);
+	const template = Base64.decode(jpegtpl);
 	template[162] = dynamic[1];
   template[160] = dynamic[2];
   var final = new Uint8Array(template.length + payload.length);
   final.set(template);
   final.set(payload, template.length);
-  return new BlobEntry('thumbnail', Base64.fromUint8Array(final), 'image/jpeg');
+  return new BlobEntry('thumbnail', Base64.encode(final), 'image/jpeg');
 };
 
 new AutomatonBuilder<UpdatePhotosRuntime>()
