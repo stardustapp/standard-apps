@@ -21,16 +21,24 @@
   <div id="editor">
     <ul id="root-tree" class="tree">
       <entry-item
-        v-for="root in roots"
-        :key="root"
         class="entry-item"
-        :name="'//' + chartName + '.chart.local' + root"
-        ref="trees"
-        :path="root"
+        name="Entry Tree"
+        ref="tree"
+        :path="''"
         :stat="{}"
         :type="'Folder'"
         :start-open="true">
       </entry-item>
+
+      <h2>Apps</h2>
+
+      <item-app
+        v-for="root in apps"
+        :key="root.name"
+        ref="apptrees"
+        :app="root"
+      />
+
     </ul>
 
     <div id="edit-pane">
@@ -82,6 +90,57 @@
       <iframe class="appframe" :src="runningApp" ref="appframe"></iframe>
     </div>
   </div>
+</script>
+
+<script type="text/x-template" id="item-app">
+  <li class="entry-item">
+    <div class="folder-name">
+      <i class="material-icons tree-icon">extension</i>
+      <span class="name">{{app.metadata.AppName}}</span>
+    </div>
+
+    <ul class="sub-tree">
+      <component v-bind:is="'item-'+child.item.family"
+        v-for="child in parents"
+        ref="children"
+        :key="child.name"
+        :item="child.item"
+        :name="child.name"
+        :path="child.path">
+      </component>
+    </ul>
+  </li>
+</script>
+
+<script type="text/x-template" id="item-Collection">
+  <li class="entry-item">
+    <div
+      class="folder-name"
+      @click="activate">
+      <i class="material-icons tree-icon">{{icon}}</i>
+      <span class="name">{{name}}</span>
+      <i class="material-icons ctxlist-icon reload-btn"
+          @click.stop="reload"
+          title="refresh folder's children"
+          >refresh</i>
+    </div>
+
+    <ul v-show="open" class="sub-tree">
+      <component v-bind:is="'item-'+item.inner.Family"
+        v-for="child in entry.Children"
+        ref="children"
+        :key="child.Name"
+        :item="item.inner"
+        :name="child.Name"
+        :path="child.Path"
+        />
+      <create-entry-item
+        :parent="path"
+        :parentItem="item"
+        :parentName="name"
+        />
+    </ul>
+  </li>
 </script>
 
 <script type="text/x-template" id="entry-item">
@@ -277,7 +336,7 @@
 <script src="/~~/lib/codemirror/mode/yaml/yaml.js"></script>
 <script src="/~~/lib/codemirror/addon/mode/overlay.js"></script>
 
-<script src="/~~/lib/vue/vue.min.js"></script>
+<script src="/~~/lib/vue/vue.js"></script>
 <script src="/~~/lib/@dustjs-client/dustjs-client.umd.js"></script>
 <script src="/~~/lib/@dustjs-client-vue/dustjs-client-vue.umd.js"></script>
 <script src="vue-codemirror.js"></script>

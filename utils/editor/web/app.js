@@ -8,6 +8,90 @@ window.require = function (names) {
 }
 const {Skylink} = DustClient;
 
+Vue.component('item-app', {
+  template: '#item-app',
+  props: {
+    app: Object,
+  },
+  computed: {
+    parents() {
+      const parents = [];
+      for (const region of this.app.roots) {
+        if (region.family != "AppRegion") {
+          console.warn('Weird family', region.family, 'at top of', this.path);
+          continue;
+        }
+        const {regionName, names} = region;
+
+        for (const [name, root] of names) {
+          // skip completely empty roots
+          if (root.family === 'Document' && root.names.length === 0) continue;
+
+          // console.log(this.path, regionName, name, JSON.stringify(root, null, 2));
+          parents.push({
+            path: `/${regionName}/${this.app.name}/${name}`,
+            name: name,
+            item: root,
+          });
+        }
+      }
+      return parents;
+    },
+  },
+});
+
+Vue.component('item-Collection', {
+  template: '#item-Collection',
+  props: {
+    name: String,
+    path: String,
+    item: Object,
+  },
+  data() {
+    return {
+      entry: {},
+      open: false,
+      loader: null, // this.startOpen ? this.load() : null,
+    };
+  },
+  computed: {
+    icon() {
+      return this.open ? "folder_open" : "folder";
+    },
+  },
+  methods: {
+    activate() {
+      this.open = !this.open;
+      if (this.open) this.load();
+    },
+    load() {
+      if (!this.loader) {
+        this.loader = skylinkP.then(x => x.enumerate(this.path, {})).then(x => {
+          this.entry = x.splice(0, 1)[0];
+          this.entry.Children = x.sort((a, b) => {
+            var nameA = a.Name.toUpperCase();
+            var nameB = b.Name.toUpperCase();
+            if (nameA < nameB) { return -1; }
+            if (nameA > nameB) { return 1; }
+            return 0;
+          });
+
+          // unescape the 'paths' - we already know there's only 1 part
+          for (const child of x) {
+            child.Path = this.path + '/' + child.Name;
+            child.Name = decodeURIComponent(child.Name);
+          }
+        });
+      }
+      return this.loader;
+    },
+    reload() {
+      this.loader = null;
+      return this.load();
+    },
+  }
+});
+
 Vue.component('entry-item', {
   template: '#entry-item',
   props: {
@@ -525,6 +609,7 @@ Vue.component('stardust-editor', {
   data: () => ({
     chartName: null,
     roots: roots,
+    apps: [],
     tabList: [],
     tabKeys: {},
     currentTab: null,
@@ -534,6 +619,14 @@ Vue.component('stardust-editor', {
     window.editorApp = this;
     window.addEventListener('keydown', this.handleKeyDown);
     this.chartName = orbiter.launcher.chartName;
+
+    skylinkP.then(x => x.enumerate('/schema', {})).then(x => {
+      this.apps = x.filter(x => x.Type === 'Blob')
+        .map(x => {
+          const data = JSON.parse(atob(x.Data));
+          return {name: x.Name, ...data};
+        });
+    });
   },
   destroyed() {
     window.removeEventListener('keydown', this.handleKeyDown);
