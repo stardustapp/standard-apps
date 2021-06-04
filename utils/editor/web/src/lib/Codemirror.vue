@@ -1,7 +1,10 @@
-// This seems related to https://github.com/surmon-china/vue-codemirror but doesn't match up, not sure where exactly this sequence of bytes came from.
+<!-- This seems related to https://github.com/surmon-china/vue-codemirror but doesn't match up, not sure where exactly this sequence of bytes came from. -->
+<template>
+  <textarea></textarea>
+</template>
 
-Vue.component('codemirror', {
-  template: '<textarea></textarea>',
+<script>
+export default {
   data: function() {
     return {
       content: ''
@@ -190,5 +193,7 @@ Vue.component('codemirror', {
         })
       }
     }
-  }
-});
+  },
+
+}
+</script>

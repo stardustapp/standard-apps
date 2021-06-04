@@ -1,7 +1,7 @@
 type: application
 bundles:
 - source: web
-  type: static html
+  type: rollup
 
 hosted_libraries:
 - npm_module: 'vue'

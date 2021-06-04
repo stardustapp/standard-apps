@@ -1,0 +1,46 @@
+<!doctype html>
+<title>Name System - Stardust</title>
+<link href="/~~/lib/typeface-roboto/index.css" rel="stylesheet">
+<link href="/~~/lib/typeface-fira-code/index.css" rel="stylesheet">
+<link href="/~~/lib/material-icons/material-icons.css" rel="stylesheet">
+<link href="/~~/lib/@dustjs-client-vue/dustjs-client-vue.css" type="text/css" rel="stylesheet">
+<link href="editor.css" type="text/css" rel="stylesheet">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<meta name="x-stardust-appid" content="editor">
+
+<div id="app">
+  <!-- render top bar w/ connection state and current user -->
+  <sky-session></sky-session>
+  <!-- sometimes-visible form to interact with Firebase Auth -->
+  <sky-auth-form></sky-auth-form>
+  <editor-app v-if="ready"></editor-app>
+</div>
+
+<link rel="stylesheet" href="/~~/lib/codemirror/lib/codemirror.css">
+<link rel="stylesheet" href="/~~/lib/codemirror/theme/tomorrow-night-bright.css">
+<script src="/~~/lib/codemirror/lib/codemirror.js"></script>
+<script src="/~~/lib/codemirror/mode/meta.js"></script>
+<script src="/~~/lib/codemirror/mode/markdown/markdown.js"></script>
+<script src="/~~/lib/codemirror/mode/css/css.js"></script>
+<script src="/~~/lib/codemirror/mode/xml/xml.js"></script>
+<script src="/~~/lib/codemirror/mode/javascript/javascript.js"></script>
+<script src="/~~/lib/codemirror/mode/htmlmixed/htmlmixed.js"></script>
+<script src="/~~/lib/codemirror/mode/vue/vue.js"></script>
+<script src="/~~/lib/codemirror/mode/go/go.js"></script>
+<script src="/~~/lib/codemirror/mode/lua/lua.js"></script>
+<script src="/~~/lib/codemirror/mode/yaml/yaml.js"></script>
+<script src="/~~/lib/codemirror/addon/mode/overlay.js"></script>
+
+<script src="/~~/lib/vue/vue.js"></script>
+<script src="/~~/lib/@dustjs-client/dustjs-client.umd.js"></script>
+<script src="/~~/lib/@dustjs-client-vue/dustjs-client-vue.umd.js"></script>
+
+<script>
+  //CONFIGURE SKYLINK//
+</script>
+<script src="editor.umd.js"></script>
+
+<script defer src="/__/firebase/7.14.2/firebase-app.js"></script>
+<script defer src="/__/firebase/7.14.2/firebase-auth.js"></script>
+<script defer src="/__/firebase/init.js"></script>
