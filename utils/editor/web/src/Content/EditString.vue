@@ -22,6 +22,7 @@
 </template>
 
 <script>
+import { debounce } from '../lib/debounce.js';
 export default {
   props: {
     tab: Object,
