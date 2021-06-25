@@ -1,6 +1,7 @@
 import vue from 'rollup-plugin-vue';
 import css from 'rollup-plugin-css-only';
 import { terser } from 'rollup-plugin-terser';
+import copy from 'rollup-plugin-copy';
 
 export default [
   {
@@ -27,6 +28,9 @@ export default [
       vue({ css: false }),
       css({ output: 'dist/editor.css' }),
       terser(),
+      copy({ targets: [
+        { src: 'src/index.html', dest: 'dist' },
+      ] }),
     ],
   },
 ];
